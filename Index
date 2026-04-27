@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موسوعة الأمجاد المصرية 2026 | مروان محمد</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700;900&family=Reem+Kufi:wght@400;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <style>
+        :root {
+            --egy-gold: #c09000;
+            --egy-red: #ce1126;
+            --egy-black: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(192, 144, 0, 0.3);
+            --neon-shadow: 0 0 30px rgba(192, 144, 0, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { 
+            background-color: var(--egy-black); 
+            color: #fff; 
+            font-family: 'Cairo', sans-serif; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+
+        .bg-4d {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2500') center/cover no-repeat;
+            filter: brightness(0.2) contrast(1.3) sepia(0.3);
+            animation: ken-burns 40s infinite alternate linear;
+        }
+        @keyframes ken-burns {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(-2%, 2%); }
+        }
+
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(5,5,5,0.4) 50%, rgba(0,0,0,0.9) 100%);
+        }
+
+        .bg-glow { position: fixed; width: 800px; height: 800px; background: radial-gradient(circle, rgba(192, 144, 0, 0.08) 0%, transparent 60%); border-radius: 50%; z-index: -1; pointer-events: none; transition: 0.1s; }
+
+        #particles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
+        .gold-flake {
+            position: absolute; bottom: -20px;
+            background: linear-gradient(45deg, #c09000, #ffe55c);
+            border-radius: 2px; opacity: 0;
+            box-shadow: 0 0 10px rgba(192, 144, 0, 0.8);
+            animation: float-up infinite linear;
+        }
+        @keyframes float-up {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
+        }
+
+        #cursor { position: fixed; width: 10px; height: 10px; background: var(--egy-gold); border-radius: 50%; pointer-events: none; z-index: 100000; box-shadow: 0 0 20px var(--egy-gold); }
+        #cursor-ring { position: fixed; width: 50px; height: 50px; border: 2px dashed var(--egy-gold); border-radius: 50%; pointer-events: none; z-index: 99999; transition: 0.15s ease-out; transform: translate(-50%, -50%); animation: spin 5s infinite linear; }
+        @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        #progress-bar { position: fixed; top: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--egy-red), var(--egy-gold), #fff); z-index: 100001; width: 0%; box-shadow: var(--neon-shadow); }
+
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        .hero h1 { font-family: 'Reem Kufi', sans-serif; font-size: clamp(4rem, 18vw, 14rem); color: transparent; -webkit-text-stroke: 2px var(--egy-gold); text-shadow: var(--neon-shadow); line-height: 0.9; animation: pulse-title 3s infinite alternate; }
+        @keyframes pulse-title { 0% { text-shadow: 0 0 20px rgba(192,144,0,0.2); } 100% { text-shadow: 0 0 60px rgba(192,144,0,0.8); } }
+        .hero p { font-size: clamp(1.2rem, 3vw, 2.5rem); letter-spacing: 2px; color: #fff; margin-top: 15px; text-shadow: 0 5px 15px #000; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+        .project-card {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+            margin-bottom: 250px; padding: 50px; background: var(--glass);
+            border-radius: 50px; border: 1px solid var(--border);
+            backdrop-filter: blur(20px); transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+        }
+        @media (max-width: 1000px) { .project-card { grid-template-columns: 1fr; gap: 40px; padding: 30px; text-align: center; } }
+        .project-card:nth-child(even) { direction: ltr; }
+        .project-card:nth-child(even) .content { direction: rtl; }
+        .project-card:hover { border-color: var(--egy-gold); transform: translateY(-10px); box-shadow: 0 20px 60px rgba(192,144,0,0.15); }
+
+        .img-wrapper { position: relative; border-radius: 40px; overflow: hidden; height: 550px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); border: 2px solid transparent; transition: 0.5s; }
+        .project-card:hover .img-wrapper { border-color: var(--egy-gold); }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); filter: grayscale(20%); }
+        .project-card:hover .img-wrapper img { transform: scale(1.15) rotate(2deg); filter: grayscale(0%); }
+
+        .content h2 { font-family: 'Reem Kufi', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--egy-gold); margin-bottom: 25px; display: inline-block; border-bottom: 2px solid var(--egy-red); padding-bottom: 10px; }
+        .content p { font-family: 'Amiri', serif; font-size: 1.4rem; color: #eee; line-height: 2.2; text-align: justify; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+
+        .features-list { list-style: none; margin-bottom: 30px; }
+        .features-list li { font-size: 1.2rem; color: #ccc; margin-bottom: 12px; display: flex; align-items: center; gap: 15px; }
+        .features-list li i { color: var(--egy-gold); font-size: 1.4rem; }
+
+        .stats-strip { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        @media (max-width: 1000px) { .stats-strip { justify-content: center; } }
+        .stat-tag { background: linear-gradient(45deg, rgba(192, 144, 0, 0.2), transparent); border: 1px solid var(--egy-gold); padding: 10px 25px; border-radius: 50px; color: #fff; font-weight: bold; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+        .footer-plate { margin: 100px 0; padding: 100px 40px; border: 4px solid var(--egy-gold); border-radius: 50px; text-align: center; background: rgba(0,0,0,0.8); position: relative; overflow: hidden; }
+        .footer-plate::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, var(--egy-gold), transparent 30%); animation: radar 10s linear infinite; z-index: -1; opacity: 0.1; }
+        @keyframes radar { 100% { transform: rotate(360deg); } }
+        .footer-plate h3 { font-family: 'Reem Kufi', sans-serif; font-size: clamp(3rem, 7vw, 6rem); color: var(--egy-gold); margin-bottom: 10px; }
+        .footer-plate p { font-size: 1.6rem; color: #fff; line-height: 1.8; }
+
+        .audio-btn { position: fixed; bottom: 40px; left: 40px; width: 70px; height: 70px; background: var(--egy-gold); border: none; border-radius: 50%; font-size: 2rem; color: #000; cursor: pointer; z-index: 100002; display: flex; align-items: center; justify-content: center; box-shadow: var(--neon-shadow); transition: 0.5s; outline: 3px solid rgba(192, 144, 0, 0.3); outline-offset: 5px; }
+        .audio-btn.playing { animation: btn-pulse 1s infinite alternate; background: #fff; outline-color: #fff; }
+        @keyframes btn-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); box-shadow: 0 0 40px rgba(255,255,255,0.6); } }
+
+        footer { padding: 40px; text-align: center; color: rgba(255,255,255,0.3); font-size: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+
+    <div class="bg-4d"></div>
+    <div class="bg-overlay"></div>
+    <div id="particles-container"></div>
+    <div class="bg-glow" id="glow"></div>
+    <div id="progress-bar"></div>
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+
+    <audio id="bg-audio" loop>
+        <source src="isis.mp3" type="audio/mpeg">
+    </audio>
+    <button class="audio-btn" id="audio-toggle"><i class="fas fa-play"></i></button>
+
+    <header class="hero">
+        <p data-aos="fade-down" data-aos-duration="1500">إعداد: مروان محمد فتحي</p>
+        <p data-aos="fade-down" data-aos-duration="1500" data-aos-delay="200">الصف الأول الثانوي | إدارة جنوب الجيزة التعليمية</p>
+        <h1 data-aos="zoom-in" data-aos-duration="2000">تحيا مصر</h1>
+        <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">موسوعة الإنجازات القومية 2026</p>
+    </header>
+
+    <div class="container">
+        <div class="project-card" data-aos="fade-up">
+            <div class="img-wrapper">
+                <img src="https://www.image2url.com/r2/default/images/1777290321255-75d11d3b-c020-4c39-bc14-17108607740e.jpg" alt="العاصمة الإدارية">
+            </div>
+            <div class="content">
+                <h2>العاصمة الإدارية الجديدة</h2>
+                <p>تمثل العاصمة الإدارية الجديدة حجر الزاوية في بناء "الجمهورية الثانية"، وهي مدينة ذكية مستدامة تهدف إلى تقديم نموذج عالمي في الإدارة الرقمية. تم بناؤها لتكون مركزاً سياسياً وثقافياً واقتصادياً رائداً في الشرق الأوسط، حيث تدار كافة مرافقها عبر "عقل مركزي" للتحكم في الطاقة والمرور.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-microchip"></i> **الحي الحكومي:** يضم كافة الوزارات والبرلمان بنظام عمل رقمي لا ورقي بالكامل.</li>
+                    <li><i class="fas fa-landmark"></i> **حي المال والأعمال:** يضم البرج الأيقوني (أطول ناطحة سحاب في أفريقيا بارتفاع 385م).</li>
+                    <li><i class="fas fa-tree"></i> **النهر الأخضر:** أكبر تجمع للحدائق المركزية المفتوحة في العالم بمساحة 1000 فدان.</li>
+                </ul>
+                <div class="stats-strip">
+                    <span class="stat-tag">6.5 مليون نسمة</span>
+                    <span class="stat-tag">170 ألف فدان</span>
+                    <span class="stat-tag">مدينة خضراء 100%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" data-aos="fade-up">
+            <div class="img-wrapper">
+                <img src="https://www.image2url.com/r2/default/images/1777290530119-35397eac-4247-4beb-82e5-dea24509e579.jpg" alt="حياة كريمة">
+            </div>
+            <div class="content">
+                <h2>مشروع القرن "حياة كريمة"</h2>
+                <p>مبادرة إنسانية وتنموية هي الأضخم من نوعها في تاريخ مصر الحديث. تستهدف تغيير وجه الحياة في الريف المصري وتطوير البنية التحتية لأكثر القرى احتياجاً. المشروع يرتكز على بناء "الإنسان المصري" عبر توفير الخدمات الأساسية التي تليق بكرامته.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-home"></i> **سكن كريم:** إعادة بناء منازل الأسر الأولى بالرعاية وتوفير سكن آدمي.</li>
+                    <li><i class="fas fa-wifi"></i> **التحول الرقمي:** مد شبكات الألياف الضوئية (الإنترنت السريع) لكل قرية مصرية.</li>
+                    <li><i class="fas fa-hospital"></i> **مجمعات خدمية:** بناء مراكز طبية ومدارس ومجمعات زراعية في قلب القرى.</li>
+                </ul>
+                <div class="stats-strip">
+                    <span class="stat-tag">4500 قرية</span>
+                    <span class="stat-tag">60 مليون مستفيد</span>
+                    <span class="stat-tag">ميزانية 1 تريليون جنيه</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" data-aos="fade-up">
+            <div class="img-wrapper">
+                <img src="https://www.image2url.com/r2/default/images/1777290577742-880de02f-fa16-413e-811c-5b13d66cc08f.jpg" alt="المتحف المصري">
+            </div>
+            <div class="content">
+                <h2>المتحف المصري الكبير (GEM)</h2>
+                <p>أكبر متحف في العالم مخصص لحضارة واحدة. صُمم ليكون وجهة عالمية تعرض كنوز الحضارة المصرية القديمة بأحدث تقنيات العرض المتحفي والواقع المعزز. يربط التصميم المعماري بين ماضي مصر العريق ومستقبلها المشرق.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-chess-king"></i> **كنوز الملك الذهبي:** عرض كامل ومجمع لآثار توت عنخ آمون لأول مرة (5000 قطعة).</li>
+                    <li><i class="fas fa-sun"></i> **التعامد الشمسي:** تصميم البهو بحيث تتعامد الشمس على تمثال رمسيس الثاني في مواعيد محددة.</li>
+                    <li><i class="fas fa-vial"></i> **مركز الترميم:** يضم أكبر معامل دولية لترميم وصيانة الآثار بالشرق الأوسط.</li>
+                </ul>
+                <div class="stats-strip">
+                    <span class="stat-tag">100 ألف قطعة أثرية</span>
+                    <span class="stat-tag">117 فدان</span>
+                    <span class="stat-tag">مسلة معلقة فريدة</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" data-aos="fade-up">
+            <div class="img-wrapper">
+                <img src="https://www.image2url.com/r2/default/images/1777290618226-104b2da4-8b1d-4917-8c3b-4adc4c3d95df.jpg" alt="المونوريل">
+            </div>
+            <div class="content">
+                <h2>المونوريل: النقل الذكي الأخضر</h2>
+                <p>يمثل المونوريل نقلة نوعية في منظومة النقل الجماعي الصديق للبيئة. هو أطول خط قطار أحادي السكة في العالم، يعمل بالطاقة الكهربائية النظيفة وبدون سائق (Driverless)، لربط أطراف القاهرة الكبرى ببعضها في وقت قياسي.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-bolt"></i> **صفر انبعاثات:** وسيلة نقل كهربائية بالكامل تحافظ على نظافة البيئة.</li>
+                    <li><i class="fas fa-train"></i> **التكامل الذكي:** يربط بين الخط الثالث للمترو، والقطار الكهربائي الخفيف LRT.</li>
+                    <li><i class="fas fa-shield-alt"></i> **أمان فائق:** نظام تحكم آلي كامل يضمن أعلى درجات السلامة والدقة.</li>
+                </ul>
+                <div class="stats-strip">
+                    <span class="stat-tag">طول 98.5 كم</span>
+                    <span class="stat-tag">سرعة 80 كم/س</span>
+                    <span class="stat-tag">35 محطة علوية</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" data-aos="fade-up">
+            <div class="img-wrapper">
+                <img src="https://www.image2url.com/r2/default/images/1777291190647-cec2ba0b-3199-4c52-91ae-a9c2d9af395b.jpg" alt="توشكى الخير">
+            </div>
+            <div class="content">
+                <h2>مشروع توشكى الخير القومي</h2>
+                <p>قهر الصحراء لتحقيق الأمن الغذائي المصري. يعد مشروع توشكى أضخم مشروع استصلاح زراعي في المنطقة، حيث تم التغلب على عوائق صخرية جبارة لشق قنوات المياه وزراعة ملايين الأفدنة بمحاصيل استراتيجية كالقمح والتمور.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-wheat-awn"></i> **الأمن الغذائي:** زراعة مساحات شاسعة بالقمح لتقليل الاستيراد وتوفير احتياجات المواطنين.</li>
+                    <li><i class="fas fa-seedling"></i> **أكبر مزرعة تمور:** يضم أكبر مزرعة لنخيل التمور في العالم (2.5 مليون نخلة).</li>
+                    <li><i class="fas fa-droplet"></i> **ري حديث:** استخدام أحدث أنظمة الري المحوري (Pivots) لترشيد استهلاك المياه.</li>
+                </ul>
+                <div class="stats-strip">
+                    <span class="stat-tag">1.1 مليون فدان</span>
+                    <span class="stat-tag">محطات رفع مياه عملاقة</span>
+                    <span class="stat-tag">اكتفاء ذاتي استراتيجي</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-plate" data-aos="zoom-in" data-aos-duration="1500">
+            <h3>مروان محمد فتحي</h3>
+            <p>مدرسة السعيدية الثانوية العسكرية للبنين</p>
+            <p>الصف الأول الثانوي - إدارة جنوب الجيزة التعليمية</p>
+            <div style="border-top: 1px solid var(--border); margin-top: 30px; padding-top: 30px;">
+                <p style="color: var(--egy-red); font-weight: bold; font-size: 1.5rem;">تحت إشراف المعلمة الفاضلة: مي صلاح</p>
+                <p style="color: var(--egy-gold); font-size: 1.2rem;">مسؤول الموهوبين</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>صُمم وكُود بشغف بواسطة مروان محمد © 2026 | رؤية مصر للمستقبل</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true, offset: 150 });
+
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursor-ring');
+        const glow = document.getElementById('glow');
+        
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
+            ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+            glow.style.left = (e.clientX - 400) + 'px'; glow.style.top = (e.clientY - 400) + 'px';
+        });
+
+        window.onscroll = () => {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById("progress-bar").style.width = (winScroll / height) * 100 + "%";
+        };
+
+        const audio = document.getElementById('bg-audio');
+        const audioBtn = document.getElementById('audio-toggle');
+        let isFirstPlay = true;
+
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                if (isFirstPlay) {
+                    audio.currentTime = 0; 
+                    isFirstPlay = false;
+                }
+                audio.play(); 
+                audioBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                audioBtn.classList.add('playing');
+            } else { 
+                audio.pause(); 
+                audioBtn.innerHTML = '<i class="fas fa-play"></i>';
+                audioBtn.classList.remove('playing');
+            }
+        });
+
+        const particlesContainer = document.getElementById('particles-container');
+        for (let i = 0; i < 40; i++) {
+            let flake = document.createElement('div');
+            flake.className = 'gold-flake';
+            let size = Math.random() * 4 + 2; 
+            flake.style.width = size + 'px';
+            flake.style.height = (size * 1.5) + 'px';
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.animationDuration = (Math.random() * 15 + 10) + 's';
+            flake.style.animationDelay = (Math.random() * 10) + 's';
+            particlesContainer.appendChild(flake);
+        }
+    </script>
+</body>
+</html>
